@@ -38,9 +38,71 @@ void complementa1 (int bin[], int tam)
     }
 }
 
-void descomplementa2 (int bin[], int tam)
+void soma (int bin1[], int bin2[], int result_bin[], int tam)
 {
+    int carry;
     int i;
+    carry = 0;
+    for (i = tam - 1; i >= 0; i--)
+    {
+        if ((bin1[i] + bin2[i] + carry) == 1)
+        {
+            result_bin[i] = 1;
+            carry = 0;
+        }
+        else
+        {
+            if ((bin1[i] + bin2[i] + carry) == 2)
+            {
+                result_bin[i] = 0;
+                carry = 1;
+            }
+            else
+            {
+                if ((bin1[i] + bin2[i] + carry) == 3)
+                {
+                    result_bin[i] = 1;
+                    carry = 1;
+                }
+                else
+                {
+                    result_bin[i] = 0;
+                    carry = 0;
+                }
+            }
+        }
+    }
+    if (result_bin[0] == 1 || (result_bin[0] == 0 && carry == 1))
+    {
+        printf("Overflow\n");
+    }
+}
+
+void subtrai (int bin1[], int bin2[], int result_bin[], int tam)
+{
+    int borrow = 0, i;
+    for (i = tam - 1; i >= 0; i--)
+    {
+        if ((bin1[i] - bin2[i] - borrow) == -1)
+        {
+            result_bin[i] = 1;
+            borrow = 1;
+        }
+        else
+        {
+            if ((bin1[i] - bin2[i] - borrow) == 1)
+            {
+                result_bin[i] = 1;
+                borrow = 0; 
+            }
+            else
+            {
+                result_bin[i] = 0;
+                borrow = 0;
+            }
+            
+        }
+    }
     
 }
 
@@ -53,7 +115,7 @@ int verifica_bin_negativo (int bin[], int tam)
     return 0; /*positivo*/
 }
 
-void coipia_para_aux (int bin_primario[], int bin_auxiliar[], int tam)
+void copia_para_aux (int bin_primario[], int bin_auxiliar[], int tam)
 {
     int i;
     for (i = 0; i < tam; i++)
