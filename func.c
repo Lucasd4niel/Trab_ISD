@@ -11,33 +11,6 @@ void vetora_binario (int bin[], int tam, int binario)
     }
 }
 
-void coverte_hexadeci (int bin[], int tam)
-{
-    int i, j, vl,r;
-    r=tam%4;
-    char map[] = "0123456789ABCDEF";
-    /*se for menor que 4*/
-    if (r != 0)
-    {
-        vl= 0;
-        for (i = 0; i < resto; i++)
-        {
-            vl = vl * 2 + bin[i];
-        }
-        printf("%c",map[vl]);
-    }
-    /* restante de 4 em 4 */
-    for (i = r; i < tam; i += 4)
-    {
-        vl= 0;
-        for (j = 0; j < 4; j++)
-        {
-            vl = vl * 2 + bin[i + j];
-        }
-        printf("%c",map[vl]);
-    }
-}
-
 int converte_decimal (int bin[], int tam)
 {
     int decimal = 0;
@@ -47,6 +20,33 @@ int converte_decimal (int bin[], int tam)
         decimal = decimal * 2 + bin[i];
     }
     return decimal;
+}
+
+void converte_hexadecimal (int bin[], int tam)
+{
+    int i, j, vl, resto;
+    char map[] = "0123456789ABCDEF";
+    resto = tam % 4;
+    /*se for menor que 4*/
+    if (resto != 0)
+    {
+        vl = 0;
+        for (i = 0; i < resto; i++)
+        {
+            vl = vl * 2 + bin[i];
+        }
+        printf("%c", map[vl]);
+    }
+    /* restante de 4 em 4 */
+    for (i = resto ; i < tam; i += 4)
+    {
+        vl = 0;
+        for (j = 0; j < 4; j++)
+        {
+            vl = vl * 2 + bin[i + j];
+        }
+        printf("%c",map[vl]);
+    }
 }
 
 void complementa1 (int bin[], int tam)
@@ -130,7 +130,6 @@ void subtrai (int bin1[], int bin2[], int result_bin[], int tam)
             
         }
     }
-    
 }
 
 int verifica_bin_negativo (int bin[], int tam)
@@ -149,4 +148,10 @@ void copia_para_aux (int bin_primario[], int bin_auxiliar[], int tam)
     {
         bin_auxiliar[i] = bin_primario[i];
     }
+}
+
+void descomplementa2 (int bin_primario[], int auxiliar_bin[], int tam)
+{
+    int bin_sub[8] = {0,0,0,0,0,0,0,1};
+    subtrai(bin_primario, bin_sub, auxiliar_bin, tam);
 }
