@@ -11,6 +11,33 @@ void vetora_binario (int bin[], int tam, int binario)
     }
 }
 
+void coverte_hexadeci (int bin[], int tam)
+{
+    int i, j, vl,r;
+    r=tam%4;
+    char map[] = "0123456789ABCDEF";
+    /*se for menor que 4*/
+    if (r != 0)
+    {
+        vl= 0;
+        for (i = 0; i < resto; i++)
+        {
+            vl = vl * 2 + bin[i];
+        }
+        printf("%c",map[vl]);
+    }
+    /* restante de 4 em 4 */
+    for (i = r; i < tam; i += 4)
+    {
+        vl= 0;
+        for (j = 0; j < 4; j++)
+        {
+            vl = vl * 2 + bin[i + j];
+        }
+        printf("%c",map[vl]);
+    }
+}
+
 int converte_decimal (int bin[], int tam)
 {
     int decimal = 0;
