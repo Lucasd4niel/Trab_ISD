@@ -27,7 +27,6 @@ void converte_hexadecimal (int bin[], int tam)
     int i, j, vl, resto;
     char map[] = "0123456789ABCDEF";
     resto = tam % 4;
-    /*se for menor que 4*/
     if (resto != 0)
     {
         vl = 0;
@@ -37,7 +36,6 @@ void converte_hexadecimal (int bin[], int tam)
         }
         printf("%c", map[vl]);
     }
-    /* restante de 4 em 4 */
     for (i = resto ; i < tam; i += 4)
     {
         vl = 0;
@@ -136,9 +134,9 @@ int verifica_bin_negativo (int bin[], int tam)
 {
     if (bin[0] == 1)
     {
-        return 1; /*negativo*/
+        return 1;
     }
-    return 0; /*positivo*/
+    return 0;
 }
 
 void copia_para_aux (int bin_primario[], int bin_auxiliar[], int tam)
