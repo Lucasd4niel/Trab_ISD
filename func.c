@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include "lib.h"
 
-void vetora_binario (int bin[], int tam, int binario)
+void vetora_binario(int bin[], int tam, int binario)
 {
     int i;
-    for (i = tam - 1; i >= 0 ; i--)
+    for (i = tam - 1; i >= 0; i--)
     {
         bin[i] = binario % 10;
         binario = binario / 10;
     }
 }
 
-int converte_decimal (int bin[], int tam)
+int converte_decimal(int bin[], int tam)
 {
     int decimal = 0;
     int i;
@@ -22,7 +22,7 @@ int converte_decimal (int bin[], int tam)
     return decimal;
 }
 
-void converte_hexadecimal (int bin[], int tam)
+void converte_hexadecimal(int bin[], int tam)
 {
     int i, j, vl, resto;
     char map[] = "0123456789ABCDEF";
@@ -36,18 +36,18 @@ void converte_hexadecimal (int bin[], int tam)
         }
         printf("%c", map[vl]);
     }
-    for (i = resto ; i < tam; i += 4)
+    for (i = resto; i < tam; i += 4)
     {
         vl = 0;
         for (j = 0; j < 4; j++)
         {
             vl = vl * 2 + bin[i + j];
         }
-        printf("%c",map[vl]);
+        printf("%c", map[vl]);
     }
 }
 
-void complementa1 (int bin[], int tam)
+void complementa1(int bin[], int tam)
 {
     int i = 0;
     for (i = 0; i < tam; i++)
@@ -63,7 +63,7 @@ void complementa1 (int bin[], int tam)
     }
 }
 
-void soma (int bin1[], int bin2[], int result_bin[], int tam)
+void soma(int bin1[], int bin2[], int result_bin[], int tam)
 {
     int carry;
     int i;
@@ -103,7 +103,7 @@ void soma (int bin1[], int bin2[], int result_bin[], int tam)
     }
 }
 
-void subtrai (int bin1[], int bin2[], int result_bin[], int tam)
+void subtrai(int bin1[], int bin2[], int result_bin[], int tam)
 {
     int borrow = 0, i;
     for (i = tam - 1; i >= 0; i--)
@@ -118,19 +118,18 @@ void subtrai (int bin1[], int bin2[], int result_bin[], int tam)
             if ((bin1[i] - bin2[i] - borrow) == 1)
             {
                 result_bin[i] = 1;
-                borrow = 0; 
+                borrow = 0;
             }
             else
             {
                 result_bin[i] = 0;
                 borrow = 0;
             }
-            
         }
     }
 }
 
-int verifica_bin_negativo (int bin[], int tam)
+int verifica_bin_negativo(int bin[], int tam)
 {
     if (bin[0] == 1)
     {
@@ -139,7 +138,7 @@ int verifica_bin_negativo (int bin[], int tam)
     return 0;
 }
 
-void copia_para_aux (int bin_primario[], int bin_auxiliar[], int tam)
+void copia_para_aux(int bin_primario[], int bin_auxiliar[], int tam)
 {
     int i;
     for (i = 0; i < tam; i++)
@@ -148,8 +147,8 @@ void copia_para_aux (int bin_primario[], int bin_auxiliar[], int tam)
     }
 }
 
-void descomplementa2 (int bin_primario[], int auxiliar_bin[], int tam)
+void descomplementa2(int bin_primario[], int auxiliar_bin[], int tam)
 {
-    int bin_sub[8] = {0,0,0,0,0,0,0,1};
+    int bin_sub[8] = {0, 0, 0, 0, 0, 0, 0, 1};
     subtrai(bin_primario, bin_sub, auxiliar_bin, tam);
 }
