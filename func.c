@@ -97,10 +97,6 @@ void soma(int bin1[], int bin2[], int result_bin[], int tam)
             }
         }
     }
-    if (result_bin[0] == 1 || (result_bin[0] == 0 && carry == 1))
-    {
-        printf("Overflow\n");
-    }
 }
 
 void subtrai(int bin1[], int bin2[], int result_bin[], int tam)
@@ -151,4 +147,30 @@ void descomplementa2(int bin_primario[], int auxiliar_bin[], int tam)
 {
     int bin_sub[8] = {0, 0, 0, 0, 0, 0, 0, 1};
     subtrai(bin_primario, bin_sub, auxiliar_bin, tam);
+}
+
+void print_bin(int bin[], int tam)
+{
+    int aux_bin[8];
+    int i;
+    
+    for (i = 0; i < tam; i++)
+    {
+        printf("%d", bin[i]);
+    }
+
+    if (verifica_bin_negativo(bin, tam) == 0)
+    {
+        printf("b (%di ", converte_decimal(bin, tam));
+        converte_hexadecimal(bin, tam);
+        printf("h)\n");
+    }
+    else
+    {
+        descomplementa2(bin, aux_bin, tam);
+        complementa1(aux_bin, tam);
+        printf("b (-%di ", converte_decimal(aux_bin, tam));
+        converte_hexadecimal(bin, tam);
+        printf("h)\n");
+    }
 }
