@@ -1,3 +1,10 @@
+/*
+ALUNOS
+Lucas Fernandes Daniel, RGA 2025.0743.005-0
+Matheus Francisco Ferreira Dos Santos, RGA 2026.0743.012-4
+Guilherme Moreira dos Santos, RGA 2025.0743.057-2
+*/
+
 #include <stdio.h>
 #include "lib.h"
 
